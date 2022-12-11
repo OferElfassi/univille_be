@@ -1,0 +1,34 @@
+{
+  "name": "univille_be",
+  "version": "1.0.0",
+  "description": "Univile game backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OferElfassi/univille_be.git"
+  },
+  "author": "Ofer Elfassi, Dekel Ben-David, Ido Dor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OferElfassi/univille_be/issues"
+  },
+  "homepage": "https://github.com/OferElfassi/univille_be#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/node": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/express": "^4.17.14",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "dotenv-flow": "^3.2.0",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.0"
+  }
+}
