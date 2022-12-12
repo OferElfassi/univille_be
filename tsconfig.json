@@ -11,8 +11,9 @@
         "esModuleInterop": true,
         "declaration": false,
         "baseUrl": ".",
-        "forceConsistentCasingInFileNames": false
-//        "typeRoots": ["./node_modules/@types"]
+        "forceConsistentCasingInFileNames": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
     },
     "include": [
         "src/**/*",
