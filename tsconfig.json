@@ -9,6 +9,7 @@
         "strict": false,
         "moduleResolution": "node",
         "esModuleInterop": true,
+        "declaration": false,
         "baseUrl": ".",
         "forceConsistentCasingInFileNames": false
 //        "typeRoots": ["./node_modules/@types"]

@@ -1,4 +1,3 @@
-import {f2} from "./d2";
+import { f2 } from './d2';
 
-f2()
-
+f2();
