@@ -51,7 +51,9 @@
   "dependencies": {
     "dotenv-flow": "^3.2.0",
     "express": "^4.18.2",
+    "install": "^0.13.0",
     "mongoose": "^6.8.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "reflect-metadata": "^0.1.13"
   }
 }
