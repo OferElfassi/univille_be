@@ -28,25 +28,23 @@
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "import/no-default-export": "off",
+    "func-names": "off",
+    "promise/always-return": "off",
     "no-underscore-dangle": "off",
+    "consistent-return": "off",
     "no-console": "off",
-    "no-use-before-define": [
-      "error",
-      {
-        "functions": false,
-        "classes": true,
-        "variables": true
-      }
-    ],
+    "no-use-before-define": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-use-before-define": [
-      "error",
+      "warn",
       {
         "functions": false,
         "classes": true,
         "variables": true,
-        "typedefs": true
+        "typedefs": false
       }
     ],
     "import/no-extraneous-dependencies": "off"

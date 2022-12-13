@@ -1,25 +1,34 @@
-// src/application.ts
-import express, { Application as ExApplication } from 'express';
+import express, { Application } from 'express';
+// import AuthRouter from './routers/auth.router';
+// import UserRouter from './routers/user.router';
+import { playerRouter } from './routers';
+import { isError, isAlive } from './middleware';
 
-class Application {
-  private readonly _instance: ExApplication;
-
-  get instance(): ExApplication {
-    return this._instance;
-  }
+class App {
+  private app: Application;
 
   constructor() {
-    this._instance = express();
-    this._instance.use(express.json());
-    this.registerRouters();
+    this.app = express();
+    this.setupGlobalMiddleware();
+    this.setupRouters();
   }
 
-  private registerRouters() {
-    this._instance.get('/', (req, res) => {
-      res.json({ message: 'Hello World!' });
+  start(port: string | number = 3000) {
+    return this.app.listen(port, () => {
+      console.log(`listening on :${port}`);
     });
-    // TODO: register routers
+  }
+
+  private setupGlobalMiddleware() {
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+  }
+
+  private setupRouters() {
+    this.app.get('/', isAlive);
+    this.app.use('/api/v1/players', playerRouter.getRouter());
+    this.app.use(isError);
   }
 }
 
-export const App = new Application();
+export default new App();

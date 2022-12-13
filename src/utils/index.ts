@@ -1,1 +1,1 @@
-export * from './metadata.keys';
+export { HttpError } from './HttpError';
