@@ -9,7 +9,10 @@
   "scripts": {
     "start-dev": "NODE_ENV=development nodemon --inspect ./src/index.ts",
     "start-prod": "NODE_ENV=production nodemon ./src/index.ts",
-    "start": "cd lib && node index.js"
+    "start": "cd lib && node index.js",
+    "build": "tsc && babel ./src --out-dir ./lib --extensions .ts",
+    "build-declaration": "tsc --emitDeclarationOnly && babel ./src --out-dir ./lib --extensions .ts --source-maps inline",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -31,7 +34,6 @@
     "@types/morgan": "^1.9.3",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
-    "babel-cli": "^6.26.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.29.0",
     "eslint-config-airbnb-base": "^15.0.0",
