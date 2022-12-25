@@ -13,7 +13,8 @@
     "build": "tsc && babel ./src --out-dir ./lib --extensions .ts",
     "build-declaration": "tsc --emitDeclarationOnly && babel ./src --out-dir ./lib --extensions .ts --source-maps inline",
     "prepare": "husky install",
-    "deploy-heroku": "npm run build && git add . && git commit -a -m \"auto deploy commit\" && git subtree push --prefix lib heroku master"
+    "deploy-heroku-subdir": "npm run build && git add . && git commit -a -m \"auto deploy commit\" && git subtree push --prefix lib heroku master",
+    "deploy-heroku": "yarn add babel-cli && npm run build && git add . && git commit -a -m \"auto deploy commit\"  && git push heroku master && yarn remove babel-cli"
   },
   "repository": {
     "type": "git",
