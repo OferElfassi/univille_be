@@ -7,7 +7,7 @@ interface IPlayerController {
   delete: IControlFn<never, { playerId: string }>;
   updateStatus: IControlFn<Partial<IStatus>, { playerId: string }>;
   getStatus: IControlFn<never, { identity: string }>;
-  givePoints: IControlFn<never, { identity: string; points: number }>;
+  givePoints: IControlFn<never, { identity: string; amount: number }>;
 }
 
 export const playerController: IPlayerController = {
@@ -62,8 +62,8 @@ export const playerController: IPlayerController = {
   },
   givePoints: async (req, res, next) => {
     try {
-      const { identity, points } = req.params;
-      const status = await Player.givePoints(identity, points);
+      const { identity, amount } = req.params;
+      const status = await Player.givePoints(identity, amount);
       res.status(200).json({ message: 'success', data: status });
     } catch (e) {
       next(e);
