@@ -4,8 +4,7 @@ import { identityQuery } from './player.queries';
 export const statics = {
   async findOneByIdentity(identity, caseSensitive = false) {
     const player = await this.findOne(identityQuery(identity, caseSensitive));
-    if (!player)
-      throw new Error('Cant find this player');
+    if (!player) throw new Error('Cant find this player');
     return player;
   },
   filterPlayers(formObj) {
