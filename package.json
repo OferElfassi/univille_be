@@ -9,10 +9,7 @@
   "scripts": {
     "start-dev": "NODE_ENV=development nodemon --inspect ./src/index.ts",
     "start-prod": "NODE_ENV=production nodemon ./src/index.ts",
-    "start": "cd lib && node index.js",
-    "build": "tsc && babel ./src --out-dir ./lib --extensions .ts",
-    "build-declaration": "tsc --emitDeclarationOnly && babel ./src --out-dir ./lib --extensions .ts --source-maps inline",
-    "prepare": "husky install"
+    "start": "cd lib && node index.js"
   },
   "repository": {
     "type": "git",
