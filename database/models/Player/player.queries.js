@@ -1,25 +1,13 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.identityQuery = void 0;
-
-var identityQuery = function identityQuery(search, casing) {
-  return {
-    $or: [{
-      id: search
-    }, {
+export const identityQuery = (search, casing) => ({
+  $or: [
+    { id: search },
+    {
       username: {
-        $regex: "^".concat(search, "$"),
+        $regex: `^${search}$`,
         // ^ = Starts with
-        $options: casing ? '' : 'i' // i = case insensitive
-
-      }
-    }, {
-      fullName: search
-    }]
-  };
-};
-
-exports.identityQuery = identityQuery;
+        $options: casing ? '' : 'i', // i = case insensitive
+      },
+    },
+    { fullName: search },
+  ],
+});

@@ -1,0 +1,39 @@
+{
+  "name": "univille_be",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.14.2"
+  },
+  "description": "Univile game backend",
+  "main": "src/index.ts",
+  "scripts": {
+    "start-dev": "NODE_ENV=development nodemon --inspect ./src/index.ts",
+    "start-prod": "NODE_ENV=production nodemon ./src/index.ts",
+    "start": "cd lib && node index.js",
+    "build": "tsc && babel ./src --out-dir ./lib --extensions .ts",
+    "build-declaration": "tsc --emitDeclarationOnly && babel ./src --out-dir ./lib --extensions .ts --source-maps inline",
+    "prepare": "husky install",
+    "deploy": "shx mkdir hh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OferElfassi/univille_be.git"
+  },
+  "author": "Ofer Elfassi, Dekel Ben-David, Ido Dor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OferElfassi/univille_be/issues"
+  },
+  "homepage": "https://github.com/OferElfassi/univille_be#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv-flow": "^3.2.0",
+    "express": "^4.18.2",
+    "install": "^0.13.0",
+    "mongoose": "^6.8.0",
+    "mongoose-autopopulate": "^0.16.1",
+    "mongoose-beautiful-unique-validation": "^7.1.1",
+    "morgan": "^1.10.0",
+    "reflect-metadata": "^0.1.13"
+  }
+}
