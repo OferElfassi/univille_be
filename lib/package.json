@@ -5,7 +5,7 @@
     "node": "16.14.2"
   },
   "description": "Univile game backend",
-  "main": "src/index.ts",
+  "main": "index.ts",
   "scripts": {
     "start": "node index.js"
   },

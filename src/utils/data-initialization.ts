@@ -45,7 +45,7 @@ const dataInitialization = async () => {
     return 'Database initialization complete';
   } catch (e) {
     if (e.code && e.code !== 11000)
-      throw new Error('Database initialization failed', e);
+      throw new Error(`Database initialization failed ${e}`);
     return 'Database initialized';
   }
 };
