@@ -7,6 +7,7 @@ export interface IPlayer {
   group: string;
   school: string;
   city: string;
+  avatar: string;
   status: IStatus;
 }
 
@@ -19,17 +20,36 @@ export interface IPlayerDocument
 }
 
 export interface IPlayerInstanceMethods {
-  editInfo: (playerInfo: Partial<IPlayer>) => Promise<IPlayerDocument>;
-  updateStatus: (status: Partial<IStatus>) => Promise<IPlayerDocument>;
+  editInfo: (
+    this: IPlayerDocument,
+    playerInfo: Partial<IPlayer>
+  ) => Promise<IPlayerDocument>;
+  updateStatus: (
+    this: IPlayerDocument,
+    status: Partial<IStatus>
+  ) => Promise<IPlayerDocument>;
 }
 
 export interface IPlayerStaticMethods {
-  filterPlayers: (
-    playerObj: Partial<IPlayerDocument>
-  ) => Promise<IPlayerDocument[]>;
+  findOneByIdentity: (
+    this: IPlayerModel,
+    identity: string /** username,id,fullName */,
+    caseSensitive?: boolean
+  ) => Promise<IPlayerDocument>;
+  filterPlayers: (playerObj: Partial<IPlayer>) => Promise<IPlayerDocument[]>;
   createPlayer: (
+    this: IPlayerModel,
     playerObj: Partial<IPlayerDocument>
   ) => Promise<IPlayerDocument>;
+  givePoints: (
+    this: IPlayerModel,
+    identity: string /** username,id,fullName */,
+    amount: number
+  ) => Promise<IStatus>;
+  getPlayerStatus: (
+    this: IPlayerModel,
+    identity: string /** username,id,fullName */
+  ) => Promise<IStatus>;
 }
 
 export interface IPlayerModel

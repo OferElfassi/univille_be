@@ -15,10 +15,12 @@ class PlayerRouter {
 
   private setup() {
     this.router.get('/', playerController.filter);
-    this.router.post('/', playerController.filter);
-    this.router.put('/:playerId', playerController.filter);
-    this.router.delete('/:playerId', playerController.filter);
-    this.router.put('/:playerId/status', playerController.filter);
+    this.router.post('/', playerController.create);
+    this.router.put('/:playerId', playerController.edit);
+    this.router.delete('/:playerId', playerController.delete);
+    this.router.put('/:playerId/status', playerController.updateStatus);
+    this.router.put('/points/:identity/:amount', playerController.givePoints);
+    this.router.get('/:identity/status', playerController.getStatus);
   }
 }
 

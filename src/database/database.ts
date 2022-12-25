@@ -1,5 +1,6 @@
 // import * as Mongoose from 'mongoose';
 import mongoose from 'mongoose';
+import { dataInitialization } from '../utils';
 
 let database: mongoose.Connection;
 
@@ -26,6 +27,7 @@ export const DBConnect = () => {
     .catch((e) => console.log('DB connection error', e));
 
   mongoose.connection.on('connected', () => {
+    dataInitialization().then(console.log).catch(console.warn);
     console.log('Database connected');
   });
 

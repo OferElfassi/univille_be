@@ -3835,6 +3835,11 @@ mongodb@4.12.1:
     "@aws-sdk/credential-providers" "^3.186.0"
     saslprep "^1.0.3"
 
+mongoose-autopopulate@^0.16.1:
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/mongoose-autopopulate/-/mongoose-autopopulate-0.16.1.tgz#69e12506dcfcaead92d276f773dd66dd6a287737"
+  integrity sha512-/wWogmjgAbry7E0u99E6ulwLc522ubQRNdbLdsSJEQ10DBFUOMOzNHMsNs0NhILps+vRm9xcqxSAsqav6APviQ==
+
 mongoose-beautiful-unique-validation@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/mongoose-beautiful-unique-validation/-/mongoose-beautiful-unique-validation-7.1.1.tgz#50eaf88e395f9b194cd29ad76913cd9ebd515653"

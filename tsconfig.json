@@ -4,7 +4,6 @@
         "module": "ESNext",
         "noImplicitAny": false,
         "skipLibCheck": true,
-        "sourceMap": true,
         "allowJs": true,
         "strict": false,
         "moduleResolution": "node",
@@ -12,8 +11,7 @@
         "declaration": false,
         "baseUrl": ".",
         "forceConsistentCasingInFileNames": false,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
+        "outDir": "lib"
     },
     "include": [
         "src/**/*",
