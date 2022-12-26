@@ -27,15 +27,13 @@ export const statics: IPlayerStaticMethods = {
     return newPlayer.save();
   },
   async givePoints(this, identity, amount) {
-    console.log(identity, amount);
     const player = await this.findOneByIdentity(identity);
-    const score = player.status.score + amount;
+    const score = player.status.score + Number(amount);
     const updatedPlayer = await player.updateStatus({ score });
     return updatedPlayer.status;
   },
 
   async getPlayerStatus(this, identity) {
-    console.log(identity);
     const player = await this.findOneByIdentity(identity);
     return player.status;
   },
