@@ -14,7 +14,7 @@
     "build-declaration": "tsc --emitDeclarationOnly && babel ./src --out-dir ./lib --extensions .ts --source-maps inline",
     "prepare": "husky install",
     "deploy-heroku-subdir": "npm run build && git add . && git commit -a -m \"auto deploy commit\" && git subtree push --prefix lib heroku master",
-    "deploy-heroku": "yarn add babel-cli && npm run build && git add . && git commit -a -m \"auto deploy commit\"  && git push heroku master && yarn remove babel-cli"
+    "deploy-heroku": "yarn add babel-cli && npm run build && git add . && git commit -m \"auto deploy commit\"  && git push heroku master && yarn remove babel-cli"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/OferElfassi/univille_be#readme",
   "devDependencies": {
-    "@babel/core": "^7.20.7",
+    "@babel/core": "^7.13.10",
     "@babel/node": "^7.20.5",
     "@babel/plugin-transform-typescript": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
@@ -36,6 +36,7 @@
     "@types/morgan": "^1.9.3",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.29.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -55,6 +56,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
+    "@babel/cli": "^7.20.7",
     "bcrypt": "^5.1.0",
     "dotenv-flow": "^3.2.0",
     "express": "^4.18.2",
