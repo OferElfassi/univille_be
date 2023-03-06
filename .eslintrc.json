@@ -32,11 +32,13 @@
     "@typescript-eslint/no-var-requires": "off",
     "import/no-default-export": "off",
     "func-names": "off",
+    "new-cap": "off",
     "promise/always-return": "off",
     "no-underscore-dangle": "off",
     "consistent-return": "off",
     "no-console": "off",
     "no-use-before-define": "off",
+    "import/no-cycle": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-use-before-define": [
       "warn",

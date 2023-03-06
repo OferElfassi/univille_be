@@ -6,7 +6,7 @@ const positionSchema = new Schema(
     x: Number,
     y: Number,
   },
-  { _id: false },
+  { _id: false }
 );
 
 export const StatusSchema = new Schema<IStatus>(
@@ -24,5 +24,5 @@ export const StatusSchema = new Schema<IStatus>(
       default: { x: 0, y: 0 },
     },
   },
-  { _id: false },
+  { _id: false }
 );
