@@ -170,24 +170,29 @@ const clearData = async () => {
 };
 const dataInitialization = async () => {
   console.log('Data initialization');
-  // try {
-  //   await clearData();
-  //   const teacher1 = await createTeacher(teachers[0]);
-  //   const class1 = await createSchoolAndClass(schoolName, className);
-  //   const mission1 = await createMission(missions[0], hints[0], targets[0]);
-  //   const player1 = await createPlayer(players[0]);
-  //   const player2 = await createPlayer(players[1]);
-  //   const player3 = await createPlayer(players[2]);
-  //   await class1.addPlayer(player1.id);
-  //   await class1.addPlayer(player2.id);
-  //   await class1.addPlayer(player3.id);
-  //   await class1.addTeacher(teacher1.id);
-  //   const game1 = await createGame(games[0], teacher1);
-  //   await game1.addMission(mission1.id);
-  //   await game1.addPlayer(player1.id);
-  console.log('data initialized');
-  // } catch (err) {
-  //   console.log('error in data initialization', err.message);
-  // }
+  try {
+    const exist = await PlayerModel.findOne({ username: 'DekelBD' });
+    if (exist) {
+      console.log('data already initialized');
+      return;
+    }
+    await clearData();
+    const teacher1 = await createTeacher(teachers[0]);
+    const class1 = await createSchoolAndClass(schoolName, className);
+    const mission1 = await createMission(missions[0], hints[0], targets[0]);
+    const player1 = await createPlayer(players[0]);
+    const player2 = await createPlayer(players[1]);
+    const player3 = await createPlayer(players[2]);
+    await class1.addPlayer(player1.id);
+    await class1.addPlayer(player2.id);
+    await class1.addPlayer(player3.id);
+    await class1.addTeacher(teacher1.id);
+    const game1 = await createGame(games[0], teacher1);
+    await game1.addMission(mission1.id);
+    await game1.addPlayer(player1.id);
+    console.log('data initialized');
+  } catch (err) {
+    console.log('error in data initialization', err.message);
+  }
 };
 export { dataInitialization };

@@ -11,7 +11,7 @@ export function crudPlugin<T extends IPluginDocument>(schema: Schema<T>): void {
   schema.pre<T>('save', function (next) {
     // Your pre-save logic goes here
     this.id = this._id;
-    console.log('Pre-save hook executed!');
+    // console.log('Pre-save hook executed!');
     next();
   });
 
