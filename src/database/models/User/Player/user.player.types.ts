@@ -1,14 +1,33 @@
 import type { Document, Model } from 'mongoose';
-import type { ILocation, ISchool, IUser } from '../..';
+import { Schema } from 'mongoose';
+import type {
+  IAchievement,
+  IClass,
+  IGame,
+  ILocation,
+  IMission,
+  ISchool,
+  IUser,
+} from '../..';
 
 export interface IPlayer {
   username: string;
   fullName: string;
   group: string;
-  school: ISchool;
+  school: ISchool | string;
+  class: IClass | string;
   avatar: string;
   score: number;
   location: ILocation;
+  achievements: IAchievement[];
+  currentGame: {
+    game: IGame;
+    currentMission: {
+      mission: IMission | Schema.Types.ObjectId;
+      startTime: Date;
+      endTime: Date;
+    };
+  };
 }
 
 export interface IPlayerDocument
@@ -22,14 +41,25 @@ export interface IPlayerInstanceMethods {
     this: IPlayerDocument,
     playerInfo: Partial<IPlayer>
   ) => Promise<IPlayerDocument>;
+  setClass: (
+    this: IPlayerDocument,
+    classIdentity: string
+  ) => Promise<IPlayerDocument>;
+  setSchool: (
+    this: IPlayerDocument,
+    schoolIdentity: string
+  ) => Promise<IPlayerDocument>;
+  addNewAchievement: (
+    this: IPlayerDocument,
+    achievement: IAchievement
+  ) => Promise<IPlayerDocument>;
+  setCurrentGame: (
+    this: IPlayerDocument,
+    game: IGame
+  ) => Promise<IPlayerDocument>;
 }
 
 export interface IPlayerStaticMethods {
-  findOneByIdentity: (
-    this: IPlayerModel,
-    identity: string /** username,id,fullName */,
-    caseSensitive?: boolean
-  ) => Promise<IPlayerDocument>;
   filterPlayers: (playerObj: Partial<IPlayer>) => Promise<IPlayerDocument[]>;
   createPlayer: (
     this: IPlayerModel,

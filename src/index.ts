@@ -4,12 +4,12 @@ import * as dotenv from 'dotenv-flow';
 
 dotenv.config({ path: `${__dirname}/..` });
 // delay 2 seconds to allow the .env file to be loaded
-setTimeout(() => {
-  import('./server');
-  require('./database');
-}, 2000);
+require('./database');
 
-import { App } from './server';
+setTimeout(() => {
+  // eslint-disable-next-line global-require
+  require('./server');
+}, 2000);
 
 import { Database } from './database';
 

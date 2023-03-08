@@ -9,10 +9,10 @@ import type {
 
 export const UserSchema = new Schema<IPD, IPM, IPIM, any, any, IPSM>(
   {
-    id: { type: String, required: true },
-    username: { type: String, required: true },
-    fullName: { type: String, required: true },
-    password: { type: String, required: true },
+    id: { type: String },
+    username: { type: String, required: [true, 'username is required'] },
+    fullName: { type: String, required: [true, 'fullName is required'] },
+    password: { type: String },
   },
   { timestamps: true, discriminatorKey: 'kind' }
 );

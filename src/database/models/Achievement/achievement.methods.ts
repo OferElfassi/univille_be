@@ -11,12 +11,4 @@ export const methods: IAchievementInstanceMethods = {
   },
 };
 
-export const statics: IAchievementStaticMethods = {
-  async findOneByIdentity(this, identity, caseSensitive = false) {
-    const achievement = await this.findOne(
-      identityQuery(identity, caseSensitive)
-    );
-    if (!achievement) throw new Error('Cant find this achievement');
-    return achievement;
-  },
-};
+export const statics: IAchievementStaticMethods = {};

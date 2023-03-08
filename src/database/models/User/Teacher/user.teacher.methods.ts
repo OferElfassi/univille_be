@@ -21,19 +21,12 @@ export const teacherMethods: ITeacherInstanceMethods = {
  ***************************************** */
 
 export const teacherStatics: ITeacherStaticMethods = {
-  async findOneByIdentity(this, identity, caseSensitive = false) {
-    const teacher = await this.findOne(identityQuery(identity, caseSensitive));
-    if (!teacher) throw new Error('Cant find this teacher');
-    return teacher;
-  },
-
   async filterTeachers(teacherObj) {
     return this.find(teacherObj);
   },
 
   createTeacher(this, teacherObj) {
     const newTeacher = new this(teacherObj);
-    newTeacher.id = newTeacher._id;
     return newTeacher.save();
   },
 

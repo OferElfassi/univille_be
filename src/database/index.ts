@@ -1,4 +1,4 @@
-import Database from './Database';
+import Database, { BaseModel } from './Database';
 
-export { Database };
+export { Database, BaseModel };
 export * from './models';

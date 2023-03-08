@@ -1,9 +1,13 @@
 import express, { Application } from 'express';
 // import AuthRouter from './routers/auth.router';
 // import UserRouter from './routers/user.router';
+import morgan from 'morgan';
+import path from 'path';
+
 import { playerRouter } from './routers';
 import { isError, isAlive } from './middleware';
 
+// localhost:3000/api/v1/players/join/DekelBD/123456
 class App {
   private app: Application;
 
@@ -22,6 +26,7 @@ class App {
   private setupGlobalMiddleware() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(morgan('combined'));
   }
 
   private setupRouters() {

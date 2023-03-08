@@ -1,5 +1,6 @@
 import { identityQuery } from '../../db.utils';
 import { IClassInstanceMethods, IClassStaticMethods } from './tclass.types';
+import { PlayerModel, TeacherModel } from '../User';
 
 export const methods: IClassInstanceMethods = {
   async editInfo(this, gradeInfo) {
@@ -7,10 +8,10 @@ export const methods: IClassInstanceMethods = {
     return this.save();
   },
   async addTeacher(this, teacherIdentity) {
-    this.teachers.push(teacherIdentity);
+    const teacher = await TeacherModel.findOneByIdentity(teacherIdentity);
+    this.teachers.push(teacher);
     return this.save();
   },
-
   removeTeacher(this, teacherId) {
     const index = this.teachers.indexOf(teacherId);
     if (index !== -1) {
@@ -20,11 +21,12 @@ export const methods: IClassInstanceMethods = {
     return Promise.resolve();
   },
 
-  async addPlayer(this, playerId) {
-    this.players.push(playerId);
+  async addPlayer(this, playerIdentity) {
+    const player = await PlayerModel.findOneByIdentity(playerIdentity);
+    console.log('class.addPlayer player', player);
+    this.players.push(player);
     return this.save();
   },
-
   removePlayer(this, playerId) {
     const index = this.players.indexOf(playerId);
     if (index !== -1) {
@@ -48,11 +50,6 @@ export const methods: IClassInstanceMethods = {
 };
 
 export const statics: IClassStaticMethods = {
-  async findOneByIdentity(identity, caseSensitive = false) {
-    const grade = await this.findOne(identityQuery(identity, caseSensitive));
-    if (!grade) throw new Error('Cant find this grade');
-    return grade;
-  },
   async filterClasses(gradeObj) {
     return this.find(gradeObj);
   },

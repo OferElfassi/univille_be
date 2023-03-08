@@ -1,3 +1,4 @@
 import App from './App';
 
-export { App };
+App.start(process.env.PORT);
+// export { App };

@@ -1,13 +1,16 @@
 import type { Model, Document } from 'mongoose';
 import type { IPlayer } from '../User';
 import type { IMission } from '../Mission';
+import { IGame } from '../Game';
 
 export interface IAchievement {
   id: string;
+  game: IGame;
   mission: IMission;
   player: IPlayer;
   duration: number;
   score: number;
+  playerTotal: number;
 }
 
 export interface IAchievementDocument
@@ -25,13 +28,7 @@ export interface IAchievementInstanceMethods {
   ) => Promise<IAchievementDocument>;
 }
 
-export interface IAchievementStaticMethods {
-  findOneByIdentity: (
-    this: IAchievementModel,
-    identity: string /** username,id,fullName */,
-    caseSensitive?: boolean
-  ) => Promise<IAchievementDocument>;
-}
+export interface IAchievementStaticMethods {}
 
 export interface IAchievementModel
   extends Model<IAchievementDocument>,

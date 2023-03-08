@@ -3,10 +3,13 @@ import type { IHint } from './Hint';
 import type { ITarget } from './Target';
 
 export interface IMission {
+  index: number;
   name: string;
   image: string;
   target: ITarget;
   hints: IHint[];
+  score: number;
+  scoreRatio: number;
 }
 
 export interface IMissionDocument

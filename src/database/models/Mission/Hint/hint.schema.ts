@@ -2,9 +2,10 @@ import { Schema } from 'mongoose';
 import type { IHint } from './hint.types';
 
 export const HintSchema = new Schema<IHint>({
-  hint: { type: String, required: true },
-  type: { type: String, required: true },
-  title: { type: String, required: true },
+  index: { type: Number },
+  hint: { type: String },
+  type: { type: String },
+  title: { type: String },
   location: { x: { type: Number }, y: { type: Number } },
   image: { type: String },
 });

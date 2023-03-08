@@ -14,13 +14,16 @@ import { pluginStatics } from '../../plugins';
 export const MissionSchema = new Schema<IPD, IPM, IPIM, any, any, IPSM>(
   {
     id: { type: String },
+    index: { type: Number, default: 0 },
     name: { type: String, required: true },
     image: { type: String },
     target: TargetSchema,
     hints: [HintSchema],
+    score: { type: Number, default: 1 },
+    scoreRatio: { type: Number, default: 1 },
   },
   { timestamps: true }
 );
 Object.assign(MissionSchema.statics, statics);
 Object.assign(MissionSchema.methods, methods);
-MissionSchema.pre('save', preSave);
+// MissionSchema.pre('save', preSave);

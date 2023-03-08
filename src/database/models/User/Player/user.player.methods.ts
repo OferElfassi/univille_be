@@ -2,14 +2,50 @@ import type {
   IPlayerInstanceMethods,
   IPlayerStaticMethods,
 } from './user.player.types';
-import { identityQuery } from '../../../db.utils';
+import { ClassModel } from '../../Tclass';
+import { SchoolModel } from '../../School';
+import { MissionModel } from '../../Mission';
+import { AchievementModel } from '../../Achievement';
+import { GameModel } from '../../Game';
 
 /** ****************************************
  *              METHODS
  ***************************************** */
 export const playerMethods: IPlayerInstanceMethods = {
-  editInfo(this, playerInfo) {
+  async editInfo(this, playerInfo) {
+    if (playerInfo.class && typeof playerInfo.class === 'string') {
+      this.class = await ClassModel.findOneByIdentity(playerInfo.class);
+    }
+    if (playerInfo.school && typeof playerInfo.school === 'string') {
+      this.school = await SchoolModel.findOneByIdentity(playerInfo.school);
+    }
     Object.assign(this, playerInfo);
+    return this.save();
+  },
+  async setClass(this, classIdentity) {
+    this.class = await ClassModel.findOneByIdentity(classIdentity);
+    return this.save();
+  },
+  async setSchool(this, schoolIdentity) {
+    this.school = await SchoolModel.findOneByIdentity(schoolIdentity);
+    return this.save();
+  },
+  async addNewAchievement(this, achievement) {
+    this.achievements.push(achievement);
+    this.score += achievement.score;
+    return this.save();
+  },
+
+  async setCurrentGame(this, game) {
+    // const firstMission = game.missions.find((m) => m.index === 1);
+    this.currentGame = {
+      game,
+      currentMission: {
+        mission: game.missions[0],
+        startTime: new Date(),
+        endTime: new Date(),
+      },
+    };
     return this.save();
   },
 };
@@ -19,17 +55,11 @@ export const playerMethods: IPlayerInstanceMethods = {
  ***************************************** */
 
 export const playerStatics: IPlayerStaticMethods = {
-  async findOneByIdentity(this, identity, caseSensitive = false) {
-    const player = await this.findOne(identityQuery(identity, caseSensitive));
-    if (!player) throw new Error('Cant find this player');
-    return player;
-  },
   filterPlayers(formObj) {
     return this.find(formObj);
   },
   createPlayer(this, playerObj) {
     const newPlayer = new this(playerObj);
-    newPlayer.id = newPlayer._id;
     return newPlayer.save();
   },
   async givePoints(this, identity, amount) {

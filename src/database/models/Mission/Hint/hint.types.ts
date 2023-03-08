@@ -1,4 +1,5 @@
 export interface IHint {
+  index: number;
   id: string;
   hint: string;
   type: 'location' | 'global';

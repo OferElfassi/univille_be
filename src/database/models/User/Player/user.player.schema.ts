@@ -5,20 +5,34 @@ import type {
   IPlayerModel as IPM,
   IPlayerStaticMethods as IPSM,
 } from './user.player.types';
+import { LocationSchema } from '../../Location';
+import { IGame } from '../../Game';
+import { IMission } from '../../Mission';
 // import { LocationSchema, UserModel } from '../..';
 
 export const PlayerSchema = new Schema<IPD, IPM, IPIM, any, any, IPSM>(
   {
     group: { type: String },
-    school: { type: String },
+    school: { type: Schema.Types.ObjectId, ref: 'School' },
+    class: { type: Schema.Types.ObjectId, ref: 'Class' },
     avatar: { type: String },
     score: { type: Number, default: 0 },
     location: {
-      type: {
-        lat: Number,
-        lng: Number,
-        address: String,
+      type: LocationSchema,
+      default: {
+        lat: 0,
+        lng: 0,
+        address: '',
       },
+    },
+    achievements: [{ type: Schema.Types.ObjectId, ref: 'Achievement' }],
+    currentGame: {
+      game: { type: Schema.Types.ObjectId, ref: 'Game' },
+      currentMission: {
+        mission: { type: Schema.Types.ObjectId, ref: 'Mission' },
+      },
+      startTime: Date,
+      endTime: Date,
     },
   },
   { timestamps: true, discriminatorKey: 'kind' }

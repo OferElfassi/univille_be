@@ -4,7 +4,7 @@ import { IPluginStatics } from './crud.plugin.types';
 export const pluginStatics: IPluginStatics = {
   async findOneByIdentity(this, identity, caseSensitive = false) {
     const entity = await this.findOne(identityQuery(identity, caseSensitive));
-    if (!entity) throw new Error('Cant find this Plugin');
+    if (!entity) throw new Error(`Cant find this entity by ${identity} `);
     return entity;
   },
   async removeByIdentity(this, identity) {
@@ -14,7 +14,7 @@ export const pluginStatics: IPluginStatics = {
   async filter(this, entityObj) {
     return this.find(entityObj);
   },
-  createOne(this, entityObj) {
+  async createOne(this, entityObj) {
     const newPlugin = new this(entityObj);
     newPlugin.id = newPlugin._id;
     return newPlugin.save();

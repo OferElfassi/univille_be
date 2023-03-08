@@ -25,12 +25,6 @@ export interface ITeacherInstanceMethods {
 }
 
 export interface ITeacherStaticMethods {
-  findOneByIdentity: (
-    this: ITeacherModel,
-    identity: string /** username,id,fullName */,
-    caseSensitive?: boolean
-  ) => Promise<ITeacherDocument>;
-
   filterTeachers: (
     this: ITeacherModel,
     teacherObj: Partial<ITeacher>
@@ -40,7 +34,6 @@ export interface ITeacherStaticMethods {
     this: ITeacherModel,
     teacherObj: Partial<ITeacherDocument>
   ) => Promise<ITeacherDocument>;
-
   deleteTeacher: (this: ITeacherModel, identity: string) => Promise<any>;
 }
 

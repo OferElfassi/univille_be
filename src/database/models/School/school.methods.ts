@@ -23,11 +23,6 @@ export const methods: ISchoolInstanceMethods = {
  ***************************************** */
 
 export const statics: ISchoolStaticMethods = {
-  async findOneByIdentity(this, identity, caseSensitive = false) {
-    const school = await this.findOne(identityQuery(identity, caseSensitive));
-    if (!school) throw new Error('Cant find this school');
-    return school;
-  },
   filterSchools(schoolObj) {
     return this.find(schoolObj);
   },

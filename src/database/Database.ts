@@ -5,18 +5,6 @@ import path from 'path';
 import './plugins';
 import { dataInitialization } from './db.utils';
 
-// plugin to add pre-save hook to all schemas
-// mongoose.plugin((schema) => {
-//   schema.pre('save', function (next) {
-//     // Your pre-save logic goes here
-//     this.id = this._id;
-//     console.log('Pre-save hook executed!');
-//     next();
-//   });
-//   // Set the toJSON option to include getters on all schemas
-//   schema.set('toJSON', { getters: true });
-// });
-
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -25,7 +13,10 @@ const options = {
   dbName: process.env.DB_NAME,
 };
 
+export interface BaseModel extends mongoose.Model<mongoose.Document> {}
+
 const preloadedSchemas = ['Location', 'Target', 'Hint'];
+
 mongoose.set('strictQuery', true);
 
 // Define a singleton class to manage Mongoose schemas and models
