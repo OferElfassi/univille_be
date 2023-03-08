@@ -14,13 +14,15 @@ class PlayerRouter {
   }
 
   private setup() {
+    this.router.get('/color', playerController.getColor);
+    this.router.get('/mission', playerController.getMission);
     this.router.get('/', playerController.filter);
     this.router.post('/', playerController.create);
     this.router.put('/:playerId', playerController.edit);
     this.router.delete('/:playerId', playerController.delete);
-    this.router.put('/:playerId/status', playerController.updateStatus);
+    // this.router.put('/:playerId/status', playerController.updateStatus);
     this.router.put('/points/:identity/:amount', playerController.givePoints);
-    this.router.get('/:identity/status', playerController.getStatus);
+    // this.router.get('/:identity/status', playerController.getStatus);
   }
 }
 

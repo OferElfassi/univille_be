@@ -1,9 +1,6 @@
 {
   "name": "univille_be",
   "version": "1.0.0",
-  "engines": {
-    "node": "16.14.2"
-  },
   "description": "Univile game backend",
   "main": "src/index.ts",
   "scripts": {
@@ -64,6 +61,8 @@
     "mongoose": "^6.8.0",
     "mongoose-autopopulate": "^0.16.1",
     "mongoose-beautiful-unique-validation": "^7.1.1",
+    "mongoose-find-or-error": "^1.0.1",
+    "mongoose-unique-validator": "^3.1.0",
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13"
   }

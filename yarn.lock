@@ -2242,6 +2242,11 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
+bluebird@^3.4.6:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
+  integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
+
 body-parser@1.20.1:
   version "1.20.1"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.20.1.tgz#b1812a8912c195cd371a3ee5e66faa2338a5c668"
@@ -3698,6 +3703,16 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
+lodash.foreach@^4.1.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.foreach/-/lodash.foreach-4.5.0.tgz#1a6a35eace401280c7f06dddec35165ab27e3e53"
+  integrity sha512-aEXTF4d+m05rVOAUG3z4vZZ4xVexLKZGF0lIxuHZ1Hplpk/3B6Z1+/ICICYRLm7c41Z2xiejbkCkJoTlypoXhQ==
+
+lodash.get@^4.0.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==
+
 lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
@@ -3882,6 +3897,22 @@ mongoose-beautiful-unique-validation@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/mongoose-beautiful-unique-validation/-/mongoose-beautiful-unique-validation-7.1.1.tgz#50eaf88e395f9b194cd29ad76913cd9ebd515653"
   integrity sha512-fprzp8nY9Qjg0+RZFMl7gVmbINRt2H53fpqyjJWwPO7nxJ9RZZB/Lo3y+mXaMP4nNMOeoJb2v3dNou6h+iLh8w==
+
+mongoose-find-or-error@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mongoose-find-or-error/-/mongoose-find-or-error-1.0.1.tgz#f0b329c3c80a205bdd2c2a000d1422f6b3eac343"
+  integrity sha512-kOsVOkWQ6hT6SYUr7+/IzQ/+7GQZ5Pah+ptg0v89ZRcYGgr525vkwZnBp5n52cACdioo7fj0zrLxk/bBY54hUQ==
+  dependencies:
+    bluebird "^3.4.6"
+
+mongoose-unique-validator@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/mongoose-unique-validator/-/mongoose-unique-validator-3.1.0.tgz#10d6fa10ccf5515461e3b5693f193d227546d60b"
+  integrity sha512-UsBBlFapip8gc8x1h+nLWnkOy+GTy9Z+zmTyZ35icLV3EoLIVz180vJzepfMM9yBy2AJh+maeuoM8CWtqejGUg==
+  dependencies:
+    lodash.foreach "^4.1.0"
+    lodash.get "^4.0.2"
+    lodash.merge "^4.6.2"
 
 mongoose@^6.8.0:
   version "6.8.1"
