@@ -1,9 +1,6 @@
 {
   "name": "univille_be",
   "version": "1.0.0",
-  "engines": {
-    "node": "16.14.2"
-  },
   "description": "Univile game backend",
   "main": "src/index.ts",
   "scripts": {
