@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv-flow';
 
 dotenv.config({ path: `${__dirname}/..` });
 // delay 2 seconds to allow the .env file to be loaded
+console.log('path', `${__dirname}/..`);
 require('./database');
 
 setTimeout(() => {
