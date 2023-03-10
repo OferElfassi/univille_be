@@ -11,7 +11,7 @@
         "declaration": false,
         "baseUrl": ".",
         "forceConsistentCasingInFileNames": false,
-        "outDir": "lib"
+        "outDir": "build"
     },
     "include": [
         "src/**/*",

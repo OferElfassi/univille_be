@@ -17,7 +17,7 @@ class App {
     this.setupRouters();
   }
 
-  start(port: string | number = 3000) {
+  start(port: string | number = 80) {
     return this.app.listen(port, () => {
       console.log(`listening on :${port}`);
     });

@@ -6,11 +6,10 @@
   "scripts": {
     "start-dev": "NODE_ENV=development nodemon --inspect ./src/index.ts",
     "start-prod": "NODE_ENV=production nodemon ./src/index.ts",
-    "start": "cd lib && node index.js",
-    "build": "tsc && babel ./src --out-dir ./lib --extensions .ts",
+    "start": "NODE_ENV=production && cd build && node index.js",
+    "build": "rimraf build && tsc && babel ./src --out-dir ./build --extensions .ts",
     "build-declaration": "tsc --emitDeclarationOnly && babel ./src --out-dir ./lib --extensions .ts --source-maps inline",
-    "prepare": "husky install",
-    "deploy-heroku-subdir": "npm run build && git add . && git commit -a -m \"auto deploy commit\" && git subtree push --prefix lib heroku master",
+    "deploy-heroku-subdir": "npm run build && git add . && git commit -a -m \"auto deploy commit\" && git subtree push --prefix build heroku master",
     "deploy-heroku": "yarn add babel-cli && npm run build && git add . && git commit -m \"auto deploy commit\"  && git push heroku master && yarn remove babel-cli"
   },
   "repository": {
@@ -55,6 +54,7 @@
   "dependencies": {
     "@babel/cli": "^7.20.7",
     "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
     "dotenv-flow": "^3.2.0",
     "express": "^4.18.2",
     "install": "^0.13.0",
@@ -64,6 +64,7 @@
     "mongoose-find-or-error": "^1.0.1",
     "mongoose-unique-validator": "^3.1.0",
     "morgan": "^1.10.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^4.4.0"
   }
 }
